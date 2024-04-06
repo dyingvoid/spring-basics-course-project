@@ -50,7 +50,8 @@ public class DBLogger extends AbstractLogger {
             Throwable causeException = e.getCause();
             if (causeException instanceof SQLException) {
                 SQLException sqlException = (SQLException) causeException;
-                if (sqlException.getSQLState().equals(SQL_ERROR_STATE_SCHEMA_EXISTS)) {
+                if (sqlException.getSQLState().equals(SQL_ERROR_STATE_SCHEMA_EXISTS) ||
+                        sqlException.getMessage().contains("exists")) {
                     System.out.println("Schema already exists");
                 } else {
                     throw e;
@@ -71,7 +72,8 @@ public class DBLogger extends AbstractLogger {
             Throwable causeException = e.getCause();
             if (causeException instanceof SQLException) {
                 SQLException sqlException = (SQLException) causeException;
-                if (sqlException.getSQLState().equals(SQL_ERROR_STATE_TABLE_EXISTS)) {
+                if (sqlException.getSQLState().equals(SQL_ERROR_STATE_TABLE_EXISTS) ||
+                    sqlException.getMessage().contains("exists")) {
                     System.out.println("Table already exists");
                 } else {
                     throw e;

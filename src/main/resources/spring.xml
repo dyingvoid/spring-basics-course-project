@@ -23,6 +23,7 @@
         p:greeting="${greeting}">
         <constructor-arg index="0" value="${id}" />
         <constructor-arg value="${name}" />
+        <constructor-arg value="${city}"/>
     </bean>
 
     <util:map id="loggerMap">
